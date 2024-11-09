@@ -1,12 +1,15 @@
 
+import controller.ConnexionController;
+import model.UserDAO;
 import view.FConnexionView;
 
 public class Main {
     public static void main(String[] args) {
-        // Création de la fenêtre de connexion
-        FConnexionView fenetreConnexion = new FConnexionView();
+        FConnexionView view = new FConnexionView();
+        UserDAO userDAO = new UserDAO();
+        ConnexionController controller = new ConnexionController(view, userDAO);
+        view.setVisible(true);
+        controller.addListeners();
 
-        // Affichage de la fenêtre
-        fenetreConnexion.setVisible(true);
     }
 }
