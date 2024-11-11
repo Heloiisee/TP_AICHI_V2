@@ -18,8 +18,8 @@ public class FConnexionView extends JFrame {
     private final JPanel contentPane;
     private final JTextField txtSaisieUtilisateur;
     private final JPasswordField pwdMotDePasse;
-    private JButton btnQuitter;
-    private JButton btnValider;
+    private final JButton btnQuitter;
+    private final JButton btnValider;
 
 
     /**
@@ -143,6 +143,7 @@ public class FConnexionView extends JFrame {
         return new String(pwdMotDePasse.getPassword());
     }
 
+
     // Méthodes pour ajouter les listeners sur les boutons
     public void addValiderListener(ActionListener listener) {
         btnValider.addActionListener(listener);
@@ -152,13 +153,28 @@ public class FConnexionView extends JFrame {
         btnQuitter.addActionListener(listener);
     }
 
+    // Méthodes pour obtenir les boutons
+    public JButton getBtnValider() {
+        return btnValider;
+    }
+
+    public JButton getBtnQuitter() {
+        return btnQuitter;
+    }
+
+
 
     public void showMessage(String message) {
-        JOptionPane.showMessageDialog(this, message);
+        // Ensure this runs on the Event Dispatch Thread
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            JOptionPane.showMessageDialog(null, message);
+        });
     }
 
 
     public void fermerFenetre() {
         dispose();
     }
+
+
 }
