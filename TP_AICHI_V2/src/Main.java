@@ -1,4 +1,3 @@
-
 import controller.ConnexionController;
 import model.UserDAO;
 import view.FConnexionView;
@@ -10,6 +9,8 @@ public class Main {
         ConnexionController controller = new ConnexionController(view, userDAO);
         view.setVisible(true);
         controller.addListeners();
+
+
 
     }
 }
